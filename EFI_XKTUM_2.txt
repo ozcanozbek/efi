@@ -1,0 +1,158 @@
+//@version=5
+indicator(title="EFI XKTUM_2")
+
+//efi
+var cumVol = 0.
+cumVol += nz(volume)
+if barstate.islast and cumVol == 0
+    runtime.error("No volume is provided by the data vendor.")
+length = input.int(5, minval=1)
+efi = ta.ema(ta.change(close) * volume, length)
+plot(efi, color=color.orange, title="Elders Force Index",style = plot.style_area)
+hline(0, color=color.lime, title="Zero",linewidth=2,linestyle=hline.style_solid)
+
+
+// rsi
+rsi1=ta.rsi(close,14)
+
+//stokastik
+periodK = input.int(14, title="%K Length", minval=1)
+smoothK = input.int(3, title="%K Smoothing", minval=1)
+periodD = input.int(3, title="%D Smoothing", minval=1)
+k = ta.sma(ta.stoch(close, high, low, periodK), smoothK)
+d = ta.sma(k, periodD)
+plot(k, title="%K", color=#2962FF)
+plot(d, title="%D", color=#FF6D00)
+h0 = hline(80, "Upper Band", color=#787B86)
+h1 = hline(20, "Lower Band", color=#787B86)
+fill(h0, h1, color=color.rgb(33, 150, 243, 90), title="Background")
+
+sart = ta.crossover(efi,0) and rsi1<65 and k>d and d<65
+
+customFunc() => sart
+//sure = str.tostring(timeframe.period)
+
+timeframe=input.timeframe(defval = '', title = 'timeframe')
+sure = str.tostring(timeframe)
+
+
+myH01 = "DAPGM"
+myH02 = "DESA"
+myH03 = "DGATE"
+myH04 = "DITAS"
+myH05 = "DMSAS"
+myH06 = "DNISI"
+myH07 = "DOGUB"
+myH08 = "DYOBY"
+myH09 = "DZGYO"
+myH10 = "EDATA"
+myH11 = "EGEPO"
+myH12 = "EGPRO"
+myH13 = "ERSU"
+myH14 = "ESCAR"
+myH15 = "ESCOM"
+myH16 = "FMIZP"
+myH17 = "FONET"
+myH18 = "FORMT"
+myH19 = "GEDZA"
+myH20 = "GENTS"
+myH21 = "GMTAS"
+myH22 = "GSDDE"
+myH23 = "HUBVC"
+
+
+
+//myH01 = ""
+//myH02 = ""
+//myH03 = ""
+//myH04 = ""
+//myH05 = ""
+//myH06 = ""
+//myH07 = ""
+//myH08 = ""
+//myH09 = ""
+//myH10 = ""
+//myH11 = ""
+//myH12 = ""
+//myH13 = ""
+//myH14 = ""
+//myH15 = ""
+//myH16 = ""
+//myH17 = ""
+//myH18 = ""
+//myH19 = ""
+//myH20 = ""
+//myH21 = ""
+//myH22 = ""
+//myH23 = ""
+
+s1 = request.security(myH01, sure, customFunc())
+s2 = request.security(myH02, sure, customFunc())
+s3 = request.security(myH03, sure, customFunc())
+s4 = request.security(myH04, sure, customFunc())
+s5 = request.security(myH05, sure, customFunc())
+s6 = request.security(myH06, sure, customFunc())
+s7 = request.security(myH07, sure, customFunc())
+s8 = request.security(myH08, sure, customFunc())
+s9 = request.security(myH09, sure, customFunc())
+s10 = request.security(myH10, sure, customFunc())
+s11 = request.security(myH11, sure, customFunc())
+s12 = request.security(myH12, sure, customFunc())
+s13 = request.security(myH13, sure, customFunc())
+s14 = request.security(myH14, sure, customFunc())
+s15 = request.security(myH15, sure, customFunc())
+s16 = request.security(myH16, sure, customFunc())
+s17 = request.security(myH17, sure, customFunc())
+s18 = request.security(myH18, sure, customFunc())
+s19 = request.security(myH19, sure, customFunc())
+s20 = request.security(myH20, sure, customFunc())
+s21 = request.security(myH21, sure, customFunc())
+s22 = request.security(myH22, sure, customFunc())
+s23 = request.security(myH23, sure, customFunc())
+
+scr_label = sure + ' AL:\n-----------\n'
+scr_label := s1 ? scr_label + myH01 + '\n' : scr_label
+scr_label := s2 ? scr_label + myH02 + '\n' : scr_label
+scr_label := s3 ? scr_label + myH03 + '\n' : scr_label
+scr_label := s4 ? scr_label + myH04 + '\n' : scr_label
+scr_label := s5 ? scr_label + myH05 + '\n' : scr_label
+scr_label := s6 ? scr_label + myH06 + '\n' : scr_label
+scr_label := s7 ? scr_label + myH07 + '\n' : scr_label
+scr_label := s8 ? scr_label + myH08 + '\n' : scr_label
+scr_label := s9 ? scr_label + myH09 + '\n' : scr_label
+scr_label := s10 ? scr_label + myH10 + '\n' : scr_label
+scr_label := s11 ? scr_label + myH11 + '\n' : scr_label
+scr_label := s12 ? scr_label + myH12 + '\n' : scr_label
+scr_label := s13 ? scr_label + myH13 + '\n' : scr_label
+scr_label := s14 ? scr_label + myH14 + '\n' : scr_label
+scr_label := s15 ? scr_label + myH15 + '\n' : scr_label
+scr_label := s16 ? scr_label + myH16 + '\n' : scr_label
+scr_label := s17 ? scr_label + myH17 + '\n' : scr_label
+scr_label := s18 ? scr_label + myH18 + '\n' : scr_label
+scr_label := s19 ? scr_label + myH19 + '\n' : scr_label
+scr_label := s20 ? scr_label + myH20 + '\n' : scr_label
+scr_label := s21 ? scr_label + myH21 + '\n' : scr_label
+scr_label := s22 ? scr_label + myH22 + '\n' : scr_label
+scr_label := s23 ? scr_label + myH23 + '\n' : scr_label
+
+alarm0 = s1 or s2 or s2 or s3 or s4 or s5 or s6 or s7 or s8 or s9 
+alarm1 = s10 or s11 or s12 or s13 or s14 or s15 or s16 or s17 or s18 or s19 
+alarm2 = s20 or s21 or s22 or s23 
+
+alarm = alarm0 or alarm1 or alarm2
+
+
+alertcondition(alarm, title = "EFI XKTUM_2", message = 'EFI XKTUM_2 {{ticker}}, FİYAT={{close}}')
+lab_1 = label.new(
+          bar_index,0, scr_label,
+          color=color.green,
+          textcolor=color.white,
+          style = label.style_label_down,
+          yloc = yloc.price)
+label.delete(lab_1[1])
+
+
+//BURADA BİTTİ
+
+
+
