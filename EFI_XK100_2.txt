@@ -1,5 +1,5 @@
 //@version=5
-indicator(title="EFI XK100_2")
+indicator(title="EFI XKTUM_2")
 
 //efi
 var cumVol = 0.
@@ -30,38 +30,36 @@ fill(h0, h1, color=color.rgb(33, 150, 243, 90), title="Background")
 sart = ta.crossover(efi,0) and rsi1<65 and k>d and d<65
 customFunc() => [sart, str.tostring(close)]
 
+
 timeframe=input.timeframe(defval = '', title = 'timeframe')
 sure = str.tostring(timeframe)
 
-myH01 = "KAREL"
-myH02 = "KLKIM"
-myH03 = "KONYA"
-myH04 = "KRSTL"
-myH05 = "KRVGD"
-myH06 = "KUYAS"
-myH07 = "KZBGY"
-myH08 = "MEDTR"
-myH09 = "MIATK"
-myH10 = "MOBTL"
-myH11 = "MTRKS"
-myH12 = "NATEN"
-myH13 = "NETAS"
-myH14 = "NIBAS"
-myH15 = "ORGE"
-myH16 = "PEKGY"
-myH17 = "PENGD"
-myH18 = "PENTA"
-myH19 = "POLHO"
-myH20 = "SAYAS"
-myH21 = "SRVGY"
-myH22 = "TEZOL"
-myH23 = "TIRE"
-myH24 = "TUKAS"
-myH25 = "USAK"
-myH26 = "VERTU"
-myH27 = "VERUS"
-myH28 = "YATAS"
-myH29 = "YEOTK"
+
+myH01 = "DAPGM"
+myH02 = "DESA"
+myH03 = "DGATE"
+myH04 = "DITAS"
+myH05 = "DMSAS"
+myH06 = "DNISI"
+myH07 = "DOGUB"
+myH08 = "DYOBY"
+myH09 = "DZGYO"
+myH10 = "EDATA"
+myH11 = "EGEPO"
+myH12 = "EGPRO"
+myH13 = "ERSU"
+myH14 = "ESCAR"
+myH15 = "ESCOM"
+myH16 = "FMIZP"
+myH17 = "FONET"
+myH18 = "FORMT"
+myH19 = "GEDZA"
+myH20 = "GENTS"
+myH21 = "GMTAS"
+myH22 = "GSDDE"
+myH23 = "HUBVC"
+
+
 
 //myH01 = ""
 //myH02 = ""
@@ -86,12 +84,6 @@ myH29 = "YEOTK"
 //myH21 = ""
 //myH22 = ""
 //myH23 = ""
-//myH24 = ""
-//myH25 = ""
-//myH26 = ""
-//myH27 = ""
-//myH28 = ""
-//myH29 = ""
 
 [s1,r1] = request.security(myH01, sure, customFunc())
 [s2,r2] = request.security(myH02, sure, customFunc())
@@ -116,12 +108,8 @@ myH29 = "YEOTK"
 [s21,r21] = request.security(myH21, sure, customFunc())
 [s22,r22] = request.security(myH22, sure, customFunc())
 [s23,r23] = request.security(myH23, sure, customFunc())
-[s24,r24] = request.security(myH24, sure, customFunc())
-[s25,r25] = request.security(myH25, sure, customFunc())
-[s26,r26] = request.security(myH26, sure, customFunc())
-[s27,r27] = request.security(myH27, sure, customFunc())
-[s28,r28] = request.security(myH28, sure, customFunc())
-[s29,r29] = request.security(myH29, sure, customFunc())
+
+
 
 scr_label = 'Çalışma Peryodu: ' + str.tostring(timeframe.period) + '\n-----------\n'
 scr_label := s1 ? scr_label + myH01 + ' : ' + r1 + ' \n' : scr_label
@@ -147,21 +135,17 @@ scr_label := s20 ? scr_label + myH20 + ' : ' + r20 + ' \n' : scr_label
 scr_label := s21 ? scr_label + myH21 + ' : ' + r21 + ' \n' : scr_label
 scr_label := s22 ? scr_label + myH22 + ' : ' + r22 + ' \n' : scr_label
 scr_label := s23 ? scr_label + myH23 + ' : ' + r23 + ' \n' : scr_label
-scr_label := s24 ? scr_label + myH24 + ' : ' + r24 + ' \n' : scr_label
-scr_label := s25 ? scr_label + myH25 + ' : ' + r25 + ' \n' : scr_label
-scr_label := s26 ? scr_label + myH26 + ' : ' + r26 + ' \n' : scr_label
-scr_label := s27 ? scr_label + myH27 + ' : ' + r27 + ' \n' : scr_label
-scr_label := s28 ? scr_label + myH28 + ' : ' + r28 + ' \n' : scr_label
-scr_label := s29 ? scr_label + myH29 + ' : ' + r29 + ' \n' : scr_label
+
+
 
 alarm0 = s1 or s2 or s2 or s3 or s4 or s5 or s6 or s7 or s8 or s9 
 alarm1 = s10 or s11 or s12 or s13 or s14 or s15 or s16 or s17 or s18 or s19 
-alarm2 = s20 or s21 or s22 or s23 or s24 or s25 or s26 or s27 or s28 or s29  
+alarm2 = s20 or s21 or s22 or s23 
 
 alarm = alarm0 or alarm1 or alarm2
 
 
-alertcondition(alarm, title = "EFI XK100_2", message = 'EFI XK100_2')
+alertcondition(alarm, title = "EFI XKTUM_2", message = 'EFI XKTUM_2')
 lab_1 = label.new(
           bar_index,0, scr_label,
           color=color.green,
