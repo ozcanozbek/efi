@@ -28,9 +28,8 @@ h1 = hline(20, "Lower Band", color=#787B86)
 fill(h0, h1, color=color.rgb(33, 150, 243, 90), title="Background")
 
 sart = ta.crossover(efi,0) and rsi1<65 and k>d and d<65
+customFunc() => [sart, str.tostring(close)]
 
-customFunc() => sart
-//sure = str.tostring(timeframe.period)
 
 timeframe=input.timeframe(defval = '', title = 'timeframe')
 sure = str.tostring(timeframe)
@@ -77,48 +76,51 @@ myH20 = "CUSAN"
 //myH19 = ""
 //myH20 = ""
 
-s1 = request.security(myH01, sure, customFunc())
-s2 = request.security(myH02, sure, customFunc())
-s3 = request.security(myH03, sure, customFunc())
-s4 = request.security(myH04, sure, customFunc())
-s5 = request.security(myH05, sure, customFunc())
-s6 = request.security(myH06, sure, customFunc())
-s7 = request.security(myH07, sure, customFunc())
-s8 = request.security(myH08, sure, customFunc())
-s9 = request.security(myH09, sure, customFunc())
-s10 = request.security(myH10, sure, customFunc())
-s11 = request.security(myH11, sure, customFunc())
-s12 = request.security(myH12, sure, customFunc())
-s13 = request.security(myH13, sure, customFunc())
-s14 = request.security(myH14, sure, customFunc())
-s15 = request.security(myH15, sure, customFunc())
-s16 = request.security(myH16, sure, customFunc())
-s17 = request.security(myH17, sure, customFunc())
-s18 = request.security(myH18, sure, customFunc())
-s19 = request.security(myH19, sure, customFunc())
-s20 = request.security(myH20, sure, customFunc())
+[s1,r1] = request.security(myH01, sure, customFunc())
+[s2,r2] = request.security(myH02, sure, customFunc())
+[s3,r3] = request.security(myH03, sure, customFunc())
+[s4,r4] = request.security(myH04, sure, customFunc())
+[s5,r5] = request.security(myH05, sure, customFunc())
+[s6,r6] = request.security(myH06, sure, customFunc())
+[s7,r7] = request.security(myH07, sure, customFunc())
+[s8,r8] = request.security(myH08, sure, customFunc())
+[s9,r9] = request.security(myH09, sure, customFunc())
+[s10,r10] = request.security(myH10, sure, customFunc())
+[s11,r11] = request.security(myH11, sure, customFunc())
+[s12,r12] = request.security(myH12, sure, customFunc())
+[s13,r13] = request.security(myH13, sure, customFunc())
+[s14,r14] = request.security(myH14, sure, customFunc())
+[s15,r15] = request.security(myH15, sure, customFunc())
+[s16,r16] = request.security(myH16, sure, customFunc())
+[s17,r17] = request.security(myH17, sure, customFunc())
+[s18,r18] = request.security(myH18, sure, customFunc())
+[s19,r19] = request.security(myH19, sure, customFunc())
+[s20,r20] = request.security(myH20, sure, customFunc())
 
-scr_label = sure + ' AL:\n-----------\n'
-scr_label := s1 ? scr_label + myH01 + '\n' : scr_label
-scr_label := s2 ? scr_label + myH02 + '\n' : scr_label
-scr_label := s3 ? scr_label + myH03 + '\n' : scr_label
-scr_label := s4 ? scr_label + myH04 + '\n' : scr_label
-scr_label := s5 ? scr_label + myH05 + '\n' : scr_label
-scr_label := s6 ? scr_label + myH06 + '\n' : scr_label
-scr_label := s7 ? scr_label + myH07 + '\n' : scr_label
-scr_label := s8 ? scr_label + myH08 + '\n' : scr_label
-scr_label := s9 ? scr_label + myH09 + '\n' : scr_label
-scr_label := s10 ? scr_label + myH10 + '\n' : scr_label
-scr_label := s11 ? scr_label + myH11 + '\n' : scr_label
-scr_label := s12 ? scr_label + myH12 + '\n' : scr_label
-scr_label := s13 ? scr_label + myH13 + '\n' : scr_label
-scr_label := s14 ? scr_label + myH14 + '\n' : scr_label
-scr_label := s15 ? scr_label + myH15 + '\n' : scr_label
-scr_label := s16 ? scr_label + myH16 + '\n' : scr_label
-scr_label := s17 ? scr_label + myH17 + '\n' : scr_label
-scr_label := s18 ? scr_label + myH18 + '\n' : scr_label
-scr_label := s19 ? scr_label + myH19 + '\n' : scr_label
-scr_label := s20 ? scr_label + myH20 + '\n' : scr_label
+
+scr_label = 'Çalışma Peryodu: ' + str.tostring(timeframe.period) + '\n-----------\n'
+scr_label := s1 ? scr_label + myH01 + ' : ' + r1 + ' \n' : scr_label
+scr_label := s2 ? scr_label + myH02 + ' : ' + r2 + ' \n' : scr_label
+scr_label := s3 ? scr_label + myH03 + ' : ' + r3 + ' \n' : scr_label
+scr_label := s4 ? scr_label + myH04 + ' : ' + r4 + ' \n' : scr_label
+scr_label := s5 ? scr_label + myH05 + ' : ' + r5 + ' \n' : scr_label
+scr_label := s6 ? scr_label + myH06 + ' : ' + r6 + ' \n' : scr_label
+scr_label := s7 ? scr_label + myH07 + ' : ' + r7 + ' \n' : scr_label
+scr_label := s8 ? scr_label + myH08 + ' : ' + r8 + ' \n' : scr_label
+scr_label := s9 ? scr_label + myH09 + ' : ' + r9 + ' \n' : scr_label
+scr_label := s10 ? scr_label + myH10 + ' : ' + r10 + ' \n' : scr_label
+scr_label := s11 ? scr_label + myH11 + ' : ' + r11 + ' \n' : scr_label
+scr_label := s12 ? scr_label + myH12 + ' : ' + r12 + ' \n' : scr_label
+scr_label := s13 ? scr_label + myH13 + ' : ' + r13 + ' \n' : scr_label
+scr_label := s14 ? scr_label + myH14 + ' : ' + r14 + ' \n' : scr_label
+scr_label := s15 ? scr_label + myH15 + ' : ' + r15 + ' \n' : scr_label
+scr_label := s16 ? scr_label + myH16 + ' : ' + r16 + ' \n' : scr_label
+scr_label := s17 ? scr_label + myH17 + ' : ' + r17 + ' \n' : scr_label
+scr_label := s18 ? scr_label + myH18 + ' : ' + r18 + ' \n' : scr_label
+scr_label := s19 ? scr_label + myH19 + ' : ' + r19 + ' \n' : scr_label
+scr_label := s20 ? scr_label + myH20 + ' : ' + r20 + ' \n' : scr_label
+
+
 
 alarm0 = s1 or s2 or s2 or s3 or s4 or s5 or s6 or s7 or s8 or s9 
 alarm1 = s10 or s11 or s12 or s13 or s14 or s15 or s16 or s17 or s18 or s19 
@@ -127,7 +129,7 @@ alarm2 = s20
 alarm = alarm0 or alarm1 or alarm2
 
 
-alertcondition(alarm, title = "EFI XKTUM_1", message = 'EFI XKTUM_1 {{ticker}}, FİYAT={{close}}')
+alertcondition(alarm, title = "EFI XKTUM_1", message = 'EFI XKTUM_1')
 lab_1 = label.new(
           bar_index,0, scr_label,
           color=color.green,
@@ -138,3 +140,6 @@ label.delete(lab_1[1])
 
 
 //BURADA BİTTİ
+
+
+
